@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)  # Used for session management
+app.secret_key = os.urandom(24)
 
 def get_db():
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -17,8 +17,15 @@ def close_db(conn):
     conn.close()
 
 conn,c = get_db()
-c.execute('''CREATE TABLE IF NOT EXISTS users 
-             (username TEXT, password TEXT, firstname TEXT, lastname TEXT, email TEXT)''')
+c.execute('''CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    f_name TEXT NOT NULL,
+    l_name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    address TEXT
+)''')
 close_db(conn)
 
 @app.route('/')
@@ -51,6 +58,7 @@ def display_user(username):
     conn,c = get_db()
     c.execute("select username,f_name,l_name,email,address from users where username = ?",(username,))
     user = c.fetchone()
+    close_db(conn)
     if user:
         return render_template('user_details.html', user=user)
     return "User not found!", 404
@@ -88,9 +96,11 @@ def upload_file():
         return redirect(request.url)
     
     if file:
-        file.save(os.path.join('uploads', file.filename))
-        word_count = count_words(os.path.join('uploads', file.filename))
-        return render_template('user_details.html', word_count=word_count)
+        BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+        UPLOAD_DIR = os.path.join(BASE_DIR,'uploads')
+        file.save(os.path.join(UPLOAD_DIR, file.filename))
+        word_count = count_words(os.path.join(UPLOAD_DIR, file.filename))
+        return render_template('count_word.html', word_count=word_count)
 
 def count_words(file_path):
     with open(file_path, 'r') as file:

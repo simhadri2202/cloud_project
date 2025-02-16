@@ -363,3 +363,62 @@ sudo systemctl restart apache2
 ls
 nano flaskapp.wsgi 
 ls -l /var/www/html/
+nano flaskapp.py
+nano
+cd templates/
+ls
+cd ..
+ls
+cd ubuntu/
+ls
+git config --global user.name "simhadri sriteja"
+git config --global user.email "simhadrisriteja3@gmail.com"
+git init
+ls
+cd ..
+ls
+cd ubuntu/
+git remote add origin https://github.com/simhadri2202/aws_project.git
+git add .
+git commit -m "Initial commit from EC2"
+git branch -M main
+git push -u origin main
+ssh-keygen -t rsa -b 4096 -C "simhadrisriteja3@gmail.com"
+ls
+cat keypair
+cat keypair.pub
+git remote set-url origin git@github.com:simhadri2202/cloud_project.git
+git push -u origin main
+git remote set-url origin git@github.com:simhadri2202/cloud_project.git
+git push -u origin main
+git remote set-url origin git@github.com:simhadri2202/cloud_project.git
+git push -u origin main
+git remote set-url origin git@github.com:simhadri2202/cloud_project.git
+ssh -T git@github.com
+ssh -vvv git@github.com
+git remote -v
+ls
+mkdir  .ssh/
+mkdir  .ssh
+ls
+cd .ssh
+ls
+ssh-keygen -t rsa -b 4096 -C "simhadrisriteja3@gmail.com"
+ls
+cd ..
+ls
+.shh
+.ssh
+cd . ssh
+cd .ssh
+ls
+cat id_rsa.pud
+cat id_rsa.pub
+ssh -T git@github.com
+git remote set-url origin git@github.com:simhadri2202/cloud_project.git
+git push -u origin main
+exit
+ls
+nano flaskapp.PY
+
+tail /var/log/apache2/error.log

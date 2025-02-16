@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count_word</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container user-info">
+        <h3>The No of words in the file are {{ word_count }}</h2>
+
+        <form action="/" method="GET">
+            <button type="submit">Go to homepage</button>
+        </form>
+    </div>
+</body>
+</html>
